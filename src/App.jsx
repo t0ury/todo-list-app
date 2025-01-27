@@ -1,7 +1,8 @@
 /** @format */
 
 import { useState } from "react";
-import Task from "./components/Task";
+import { Task, Tasks } from "./components/Task";
+import { Input } from "./components/Input";
 import "./App.css";
 
 function App() {
@@ -9,7 +10,11 @@ function App() {
 
   return (
     <>
-      <Task />
+      <Input></Input>
+      <Tasks>
+        <Task />
+        <Task />
+      </Tasks>
     </>
   );
 }
