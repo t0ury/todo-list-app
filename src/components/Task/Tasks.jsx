@@ -1,5 +1,4 @@
 /** @format */
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { AddTask, Task } from "./";
 import Ajv from "ajv";
@@ -65,17 +64,20 @@ const Tasks = () => {
     }
     /**  End data validation */
 
-    setTasks((prevState) => [
-      ...prevState,
-      {
-        key: Date.now,
-        id: Date.now,
-        title: inputTitle,
-        content: inputContent,
-      },
-    ]);
+    inputTitle &&
+      inputContent &&
+      setTasks((prevState) => [
+        ...prevState,
+        {
+          key: Date.now(),
+          id: Date.now(),
+          title: inputTitle,
+          content: inputContent,
+        },
+      ]);
     setInputTitle("");
     setInputContent("");
+    console.log("tasks", tasks);
   };
   const completeTask = (id) => {
     const filterList = tasks.filter((task) => task.id !== id);
