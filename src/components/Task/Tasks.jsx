@@ -88,7 +88,9 @@ const Tasks = () => {
     data && setTasks(data);
     setIsLoading(false);
   }, []);
-
+  useEffect(() => {
+    isLoading || localStorage.setItem("toDoList", JSON.stringify(tasks));
+  }, [tasks, isLoading]);
   return (
     <>
       <div className="list__header">
