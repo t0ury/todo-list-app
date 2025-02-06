@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { AddTask, Task } from "./";
 import Ajv from "ajv";
 import ajvErrors from "ajv-errors";
+import { v4 as uuid } from "uuid";
 
 const schema = {
   type: "object",
@@ -69,15 +70,14 @@ const Tasks = () => {
       setTasks((prevState) => [
         ...prevState,
         {
-          key: Date.now(),
-          id: Date.now(),
+          key: uuid(),
+          id: uuid(),
           title: inputTitle,
           content: inputContent,
         },
       ]);
     setInputTitle("");
     setInputContent("");
-    console.log("tasks", tasks);
   };
   const completeTask = (id) => {
     const filterList = tasks.filter((task) => task.id !== id);
